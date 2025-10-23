@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: runner
+  name: global
   namespace: argocd
 spec:
   destination:
-    namespace: runner
+    namespace: global
     server: https://kubernetes.default.svc
   ignoreDifferences:
     - jsonPointers:
@@ -13,7 +13,7 @@ spec:
       kind: Secret
   project: default
   source:
-    path: runner
+    path: global
     repoURL: git@github.com:runitkr/infra.git
     targetRevision: HEAD
   syncPolicy:
