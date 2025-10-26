@@ -29,6 +29,7 @@ rules:
       - secrets
       - services
       - configmaps
+      - pods
     verbs:
       - get
       - create
