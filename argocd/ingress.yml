@@ -3,15 +3,8 @@ kind: Ingress
 metadata:
   name: argocd
   namespace: argocd
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
-    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
 spec:
   ingressClassName: nginx
-  tls:
-  - hosts:
-    - argo.admin.run.it.kr
-    secretName: argocd-ingress-tls
   rules:
   - host: argo.admin.run.it.kr
     http:

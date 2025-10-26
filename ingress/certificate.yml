@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ingress-tls-cert
+  namespace: ingress
+spec:
+  dnsNames:
+    - run.it.kr
+    - '*.run.it.kr'
+    - '*.admin.run.it.kr'
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: letsencrypt
+  secretName: ingress-tls-cert
+  privateKey:
+    algorithm: ECDSA
+    size: 384
+  usages:
+    - digital signature
+    - key encipherment

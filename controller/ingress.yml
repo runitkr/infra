@@ -3,14 +3,8 @@ kind: Ingress
 metadata:
   name: controller
   namespace: controller
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   ingressClassName: nginx
-  tls:
-  - hosts:
-    - run.it.kr
-    secretName: controller-ingress-tls
   rules:
   - host: run.it.kr
     http:

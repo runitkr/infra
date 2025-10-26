@@ -1,0 +1,23 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: letsencrypt
+  namespace: ingress
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: cert@run.it.kr
+    profile: tlsserver
+    privateKeySecretRef:
+      name: letsencrypt
+    preferredChain: "ISRG Root X2"
+    solvers:
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            name: ingress-secret
+            key: CLOUDFLARE_API_TOKEN
+      selector:
+        dnsZones:
+        - run.it.kr
+
